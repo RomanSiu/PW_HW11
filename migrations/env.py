@@ -4,7 +4,6 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
-
 from src.database.db import SQLALCHEMY_DATABASE_URL
 from src.database.models import Base
 
