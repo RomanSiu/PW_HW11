@@ -1,4 +1,4 @@
-from sqlalchemy import String, DateTime, ForeignKey
+from sqlalchemy import String, DateTime, ForeignKey, Boolean
 from sqlalchemy.orm import declarative_base, mapped_column, Mapped, relationship
 from datetime import datetime
 
@@ -28,3 +28,5 @@ class User(Base):
     password: Mapped[String] = mapped_column(String(100), nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.now())
     refresh_token: Mapped[String] = mapped_column(String(255), nullable=True)
+    confirmed: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
+    avatar: Mapped[String] = mapped_column(String(255), nullable=True)
