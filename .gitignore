@@ -1,0 +1,4 @@
+**/postgres-data
+**/.idea
+**/test
+*.env
