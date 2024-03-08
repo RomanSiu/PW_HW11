@@ -19,12 +19,32 @@ red = redis.Redis(host=settings.redis_host, port=settings.redis_port, db=0)
 
 @router.get("/me/", response_model=UserDb)
 async def read_users_me(current_user: User = Depends(auth_service.get_current_user)):
+    """
+    Return information about the current user.
+
+    :param current_user: Data of the current user.
+    :type current_user: User
+    :return: Return data about the current user.
+    :rtype: User
+    """
     return current_user
 
 
 @router.patch('/avatar', response_model=UserDb)
 async def update_avatar_user(file: UploadFile = File(), current_user: User = Depends(auth_service.get_current_user),
                              db: Session = Depends(get_db)):
+    """
+    Update the avatar of the current user.
+
+    :param file: File to be updated with the avatar.
+    :type file: UploadFile
+    :param current_user: Data of the current user.
+    :type current_user: User
+    :param db: The database session.
+    :type db: Session
+    :return: Data of the updated user.
+    :rtype: User
+    """
     cloudinary.config(
         cloud_name=settings.cloudinary_name,
         api_key=settings.cloudinary_api_key,

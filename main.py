@@ -26,14 +26,14 @@ app.include_router(users.router, prefix='/api')
 
 
 @app.on_event("startup")
-async def startup():
+async def startup() -> None:
     r = await redis.Redis(host=settings.redis_host, port=settings.redis_port,
                           db=0, encoding="utf-8", decode_responses=True)
     await FastAPILimiter.init(r)
 
 
 @app.get("/", dependencies=[Depends(RateLimiter(times=2, seconds=5))])
-def read_root():
+def read_root() -> dict:
     return {"Hello": "World"}
 
 
