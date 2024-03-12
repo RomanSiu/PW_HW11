@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field, EmailStr
+from pydantic import BaseModel, Field, EmailStr, ConfigDict
 from pydantic_extra_types.phone_numbers import PhoneNumber
 from datetime import datetime
 
@@ -25,9 +25,10 @@ class UserDb(BaseModel):
     email: EmailStr
     created_at: datetime
     avatar: str
+    model_config = ConfigDict(from_attributes=True)
 
-    class Config:
-        from_attribute = True
+    # class Config:
+    #     from_attribute = True
 
 
 class UserResponse(BaseModel):

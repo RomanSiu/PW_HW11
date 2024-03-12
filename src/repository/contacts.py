@@ -53,7 +53,7 @@ async def get_contact(contact_id: int, user: User, db: Session) -> Contact:
     :return: The contact with the specified ID, or None if it does not exist.
     :rtype: Contact | None
     """
-    return db.query(Contact).filter(and_(Contact.id == contact_id, Contact.user_id == user,id)).first()
+    return db.query(Contact).filter(and_(Contact.id == contact_id, Contact.user_id == user.id)).first()
 
 
 async def create_contact(body: ContactModel, user: User, db: Session) -> Contact:

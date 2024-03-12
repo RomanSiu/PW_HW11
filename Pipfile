@@ -20,6 +20,8 @@ redis = "*"
 fastapi-limiter = "*"
 cloudinary = "*"
 libgravatar = "*"
+pytest = "*"
+httpx = "*"
 
 [dev-packages]
 sphinx = "*"
